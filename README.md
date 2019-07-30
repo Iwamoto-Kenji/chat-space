@@ -7,7 +7,7 @@
 |email|string|null: false|
 |password|string|null: false|
 |username|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+
 
 ### Association
 - has_many :messages
@@ -18,23 +18,22 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|image|text||
-|text|text||
+|message|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- has_many :members
-- has_many  :groups,  through:  :members
+- belongs_to :group
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false|s
+|name|string|null: false|
 
 ### Association
+- has_many :message
 - has_many :members
 - has_many  :users,  through:  :members
 
