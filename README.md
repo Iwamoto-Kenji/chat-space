@@ -6,7 +6,7 @@
 |------|----|-------|
 |email|string|null: false|
 |password|string|null: false|
-|username|string|null: false, index: true|
+|name|string|null: false, index: true|
 
 
 ### Association
