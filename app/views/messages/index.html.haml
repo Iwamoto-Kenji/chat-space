@@ -6,9 +6,9 @@
         .left_content_header__box__name
           testname
         .left_content_header__box__icons
-          %a.chat-side__user--new-group{href: '/groups/new'}
+          %link_to.chat-side__user--new-group{href: '/groups/new'}
             %p.fa.fa-edit
-          %a.chat-side__user--edit-user{href: '/users/edit'}
+          %link_to.chat-side__user--edit-user{href: '/users/edit'}
             %p.fa.fa-cog
 
 
@@ -35,11 +35,11 @@
     .messageslists
       = render partial: "messages/message", locals: { message: @message }
 
-    %form{:action => "/", :method => "post", class: "form"}
+    %form{action: "/", method:  "post", class: "form"}
       .new-message
-        %input{:name => "body", placeholder: "type a message",class: "input-box"}
+        %input{name: "body", placeholder: "type a message",class: "input-box"}
 
         %label.upload-label{for: "upload-icon"}
           %i.fa.fa-picture-o
-          %input{:name => "image", type: "file",class: "input-box__image",id: "upload-icon"}
-        %input{:type => "submit", :value => "send",class:"submit-btn"}
+          %input{name: "image", type: "file",class: "input-box__image",id: "upload-icon"}
+        %input{type: "submit", value: "send",class:"submit-btn"}

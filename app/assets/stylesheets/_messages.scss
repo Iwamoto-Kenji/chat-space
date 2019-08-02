@@ -92,7 +92,7 @@
       border-top: solid 1px #eeeeee;
       .messagelist{
         padding:20px 40px;
-        .messagelist__create{
+        &__create{
           height: 20px;
           .messagelist__name{
             height: 20px;
@@ -110,7 +110,7 @@
             float: left;
           }
         }
-        .messagelist__comment{
+        &__comment{
           font-size: 14px;
           color: $black;
           padding-top: 10px;
