@@ -2,3 +2,9 @@
 @import "reset";
 @import "variable";
 @import "messages";
+@import "modules/user";
+
+// colors.scssとflash.scssをインポート
+@import "config/colors";
+@import "modules/flash";
+@import "modules/group";

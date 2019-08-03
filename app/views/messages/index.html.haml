@@ -4,25 +4,32 @@
       .left_content_header__box
 
         .left_content_header__box__name
-          testname
+          = current_user.name
         .left_content_header__box__icons
-          %link_to.chat-side__user--new-group{href: '/groups/new'}
-            %p.fa.fa-edit
-          %link_to.chat-side__user--edit-user{href: '/users/edit'}
-            %p.fa.fa-cog
-
+          .chat-side__user--new-group
+            = link_to new_group_path do
+              = fa_icon 'pencil-square-o', class: 'icon'
+          .chat-side__user--edit-user
+            = link_to edit_user_path(current_user) do
+              = fa_icon 'cog', class: 'icon'
 
     .group_display
       .group_list
-        .group_name
-          group
-        .message_least
-          テスト
-      .group_list
-        .group_name
-          テスト
-        .message_least
-          テスト
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group) do
+            .group_name
+              = group.name
+            .group__least
+              メッセージはまだありません。
+      -#   .group_name
+      -#     group
+      -#   .message_least
+      -#     テスト
+      -# .group_list
+      -#   .group_name
+      -#     テスト
+      -#   .message_least
+      -#     テスト
   .main_content
     .main_header
       .main_header_display
