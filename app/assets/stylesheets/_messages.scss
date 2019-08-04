@@ -68,9 +68,11 @@
           padding: 35px 0 15px 40px;
         }
         .main_login_name{
+          display: flex;
           font-size: 12px;
           padding: 0 0 0 40px;
           color: $lightgray;
+          padding-inline-start: 40px;
         }
       }
       .edit_btn{
@@ -124,7 +126,7 @@
       padding: 20px 40px;
       background-color: $lightgray;
       position:fixed;
-      .new-message{
+      .new_message{
         display: flex;
         position:relative;
         .input-box{
@@ -154,5 +156,14 @@
         }
       }
     }
+  }
+}
+
+.notification {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  .alert {
+    width: 100vw;
   }
 }

@@ -20,33 +20,40 @@
             .group_name
               = group.name
             .group__least
-              メッセージはまだありません。
-      -#   .group_name
-      -#     group
-      -#   .message_least
-      -#     テスト
-      -# .group_list
-      -#   .group_name
-      -#     テスト
-      -#   .message_least
-      -#     テスト
+              = group.show_last_message
+
+
+
   .main_content
     .main_header
       .main_header_display
         .main_group_name
-          sampleグループ
-        .main_login_name
-          Members:test
+          = @group.name
+        %ul.main_login_name 
+          Members : 
+          %li>
+          - @group.users.each do |group_user|
+            = group_user.name
       .edit_btn
         Edit
     .messageslists
-      = render partial: "messages/message", locals: { message: @message }
+      = render @messages
 
-    %form{action: "/", method:  "post", class: "form"}
-      .new-message
-        %input{name: "body", placeholder: "type a message",class: "input-box"}
+    .form
+      = form_for [@group, @message],{class: "new_message"} do |f|
+        = f.text_field :content, class: 'input-box', placeholder: 'type a message'
+        = f.label :image, class: 'upload-label' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'input-box__image'
+        = f.submit 'Send', class: 'submit-btn'
 
-        %label.upload-label{for: "upload-icon"}
-          %i.fa.fa-picture-o
-          %input{name: "image", type: "file",class: "input-box__image",id: "upload-icon"}
-        %input{type: "submit", value: "send",class:"submit-btn"}
+
+    -# %form{action: "/", method:  "post", class: "form"}
+    -#   .new-message
+    -#     %input{name: "body", placeholder: "type a message",class: "input-box"}
+
+    -#     %label.upload-label{for: "upload-icon"}
+    -#       %i.fa.fa-picture-o
+    -#       %input{name: "image", type: "file",class: "input-box__image",id: "upload-icon"}
+    -#     %input{type: "submit", value: "send",class:"submit-btn"}
+
