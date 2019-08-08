@@ -34,7 +34,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messageslists').append(html)
-      $('.input-box').val('')
+      $('.input-box').reset;
       $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fast');
       $('#new_message')[0].reset();
     })
