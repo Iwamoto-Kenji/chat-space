@@ -40,7 +40,7 @@
       = render @messages
 
     .form
-      = form_for [@group, @message],{class: "new_message"} do |f|
+      = form_for [@group, @message], html:{class: "new_message", id: 'new_message'} do |f|
         = f.text_field :content, class: 'input-box', placeholder: 'type a message'
         = f.label :image, class: 'upload-label' do
           = fa_icon 'picture-o', class: 'icon'
