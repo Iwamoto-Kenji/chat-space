@@ -4,20 +4,8 @@
       = message.user.name
       
     .messagelist__post_date
-      = message.created_at.strftime("%Y/%m/%d %H:%M")
+      = message.created_at.strftime("%Y-%m-%d %H:%M")
       
   .messagelist__comment
-    - if message.content.present?
-      = message.content
-    = image_tag message.image.url, class: 'input-box__image' if message.image.present?
-
-
--# .messagelist
--#   .messagelist__create
--#     .messagelist__name
--#       test
--#     .messagelist__post_date
--#       2019/08/01 23:38:09
--#   .messagelist__comment
--#     テスト
--# .messagelist
+    = message.content if message.content.present?
+  = image_tag message.image.url, class: 'input-box__image' if message.image.present?
