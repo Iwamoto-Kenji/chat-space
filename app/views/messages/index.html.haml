@@ -1,47 +1,47 @@
-.contents
-  .left_content
-    .main_display
-      .left_content_header__box
+-# .contents
+-#   .left_content
+-#     .main_display
+-#       .left_content_header__box
 
-        .left_content_header__box__name
-          = current_user.name
-        .left_content_header__box__icons
-          .chat-side__user--new-group
-            = link_to new_group_path do
-              = fa_icon 'pencil-square-o', class: 'icon'
-          .chat-side__user--edit-user
-            = link_to edit_user_path(current_user) do
-              = fa_icon 'cog', class: 'icon'
+-#         .left_content_header__box__name
+-#           = current_user.name
+-#         .left_content_header__box__icons
+-#           .chat-side__user--new-group
+-#             = link_to new_group_path do
+-#               = fa_icon 'pencil-square-o', class: 'icon'
+-#           .chat-side__user--edit-user
+-#             = link_to edit_user_path(current_user) do
+-#               = fa_icon 'cog', class: 'icon'
 
-    .group_display
-      .group_list
-        - current_user.groups.each do |group|
-          = link_to group_messages_path(group) do
-            .group_name
-              = group.name
-            .group__least
-              = group.show_last_message
+-#     .group_display
+-#       .group_list
+-#         - current_user.groups.each do |group|
+-#           = link_to group_messages_path(group) do
+-#             .group_name
+-#               = group.name
+-#             .group__least
+-#               = group.show_last_message
 
-  .main_content
-    .main_header
-      .main_header_display
-        .main_group_name
-          = @group.name
-        %ul.main_login_name 
-          Members : 
-          %li>
-          - @group.users.each do |group_user|
-            = group_user.name
-      = link_to 'Edit', edit_group_path(@group.id), class: "edit_btn"
+-#   .main_content
+-#     .main_header
+-#       .main_header_display
+-#         .main_group_name
+-#           = @group.name
+-#         %ul.main_login_name 
+-#           Members : 
+-#           %li>
+-#           - @group.users.each do |group_user|
+-#             = group_user.name
+-#       = link_to 'Edit', edit_group_path(@group.id), class: "edit_btn"
         
-    .messageslists
-      = render @messages
+-#     .messageslists
+-#       = render @messages
 
-    .form
-      = form_for [@group, @message], html:{class: "new_message", id: 'new_message'} do |f|
-        = f.text_field :content, class: 'input-box', placeholder: 'type a message'
-        = f.label :image, class: 'upload-label' do
-          = fa_icon 'picture-o', class: 'icon'
-          = f.file_field :image, class: 'input-box__image'
-        = f.submit 'Send', class: 'submit-btn'
+-#     .form
+-#       = form_for [@group, @message], html:{class: "new_message", id: 'new_message'} do |f|
+-#         = f.text_field :content, class: 'input-box', placeholder: 'type a message'
+-#         = f.label :image, class: 'upload-label' do
+-#           = fa_icon 'picture-o', class: 'icon'
+-#           = f.file_field :image, class: 'input-box__image'
+-#         = f.submit 'Send', class: 'submit-btn'
 
