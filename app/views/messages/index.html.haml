@@ -22,8 +22,6 @@
             .group__least
               = group.show_last_message
 
-
-
   .main_content
     .main_header
       .main_header_display
@@ -34,8 +32,8 @@
           %li>
           - @group.users.each do |group_user|
             = group_user.name
-      .edit_btn
-        Edit
+      = link_to 'Edit', edit_group_path(@group.id), class: "edit_btn"
+        
     .messageslists
       = render @messages
 
@@ -46,14 +44,4 @@
           = fa_icon 'picture-o', class: 'icon'
           = f.file_field :image, class: 'input-box__image'
         = f.submit 'Send', class: 'submit-btn'
-
-
-    -# %form{action: "/", method:  "post", class: "form"}
-    -#   .new-message
-    -#     %input{name: "body", placeholder: "type a message",class: "input-box"}
-
-    -#     %label.upload-label{for: "upload-icon"}
-    -#       %i.fa.fa-picture-o
-    -#       %input{name: "image", type: "file",class: "input-box__image",id: "upload-icon"}
-    -#     %input{type: "submit", value: "send",class:"submit-btn"}
 
