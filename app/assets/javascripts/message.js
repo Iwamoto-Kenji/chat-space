@@ -1,8 +1,9 @@
 $(document).on('turbolinks:load', function() {
-  function buildHTML(message){
-    var addImage = message.image? `<img src ="${message.image}" class="input-box__image"></img>` :  " " ;
 
-    var html = `<div class="messagelist">
+  function buildHTML(message){
+    var addImage = message.image? `<img src="${message.image}" class="input-box__image" />` :  " " ;
+
+    var html = `<div class="messagelist" data-id="${message.id}">
                   <div class="messagelist__create">
                     <div class="messagelist__name">
                     ${message.user_name}
@@ -12,7 +13,7 @@ $(document).on('turbolinks:load', function() {
                     </div>
                   </div>
                   <div class="messagelist__comment">
-                  ${message.content}</p>
+                  <p>${message.content}</p>
                   ${addImage}
                   </div>
                 </div>`
@@ -23,7 +24,6 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
-    console.log(url);
     $.ajax({
       url: url,
       type: "POST",
@@ -44,5 +44,33 @@ $(document).on('turbolinks:load', function() {
     .always(function(){
       $('.submit-btn').attr('disabled', false);
     })
+
+    
   })
+  var reloadMessages = function() {
+    last_message_id = $('.messagelist').last().data("id");
+    $.ajax({
+      url: 'api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message){
+        insertHTML += buildHTML(message);
+      });
+
+      $('.messageslists').append(insertHTML);
+      $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fasts');
+      
+    })
+    .fail(function() {
+      console.log('error');
+    });
+
+  };
+  if(document.URL.match("/messages")) {
+    setInterval(reloadMessages, 5000);
+  }
 })
