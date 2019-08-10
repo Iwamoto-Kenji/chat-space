@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
       })
     });
 
-    $(document).on("click", ".chat-group-user__btn--add", function () {
+    $("#user-search-result").on("click", ".chat-group-user__btn--add", function () {
       var add_list = $("#chat-group-users");
       var name = $(this).attr('data-user-name');
       var id = $(this).attr('data-user-id');
