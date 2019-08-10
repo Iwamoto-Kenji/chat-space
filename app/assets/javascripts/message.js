@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
   function buildHTML(message){
     var addImage = message.image? `<img src ="${message.image}" class="input-box__image"></img>` :  " " ;
 
@@ -23,6 +23,7 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
+    console.log(url);
     $.ajax({
       url: url,
       type: "POST",
@@ -33,8 +34,8 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messageslists').append(html)
-      $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fast');
+      $('.messageslists').append(html);
+      $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fasts');
       $('#new_message')[0].reset();
     })
     .fail(function(){
