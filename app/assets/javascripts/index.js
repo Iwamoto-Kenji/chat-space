@@ -37,21 +37,24 @@ $(document).on('turbolinks:load', function() {
       })
     });
 
-    $(document).on("click", ".chat-group-user__btn--add", function () {
-      var add_list = $("#chat-group-users");
-      var name = $(this).attr('data-user-name');
-      var id = $(this).attr('data-user-id');
-      var html = `<div class='chat-group-user'>
-                    <input name='group[user_ids][]' type='hidden' value=${id}>
-                    <p class='chat-group-user__name'>${name}</p>
-                    <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
-                  </div>`
-      add_list.append(html);
-      $(this).parent().remove();
-    });
-
     $(document).on("click", ".js-remove-btn", function () {
       $(this).parent().remove();
     });
-
 });
+
+$(function(){
+  $(document).on("click", ".chat-group-user__btn--add", function (e) {
+    e.preventDefault();
+    var add_list = $("#chat-group-users");
+    var name = $(this).attr('data-user-name');
+    var id = $(this).attr('data-user-id');
+    var html = `<div class='chat-group-user'>
+                  <input name='group[user_ids][]' type='hidden' value=${id}>
+                  <p class='chat-group-user__name'>${name}</p>
+                  <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+                </div>`
+    add_list.append(html);
+    $(this).parent().remove();
+  });
+})
+
