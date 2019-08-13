@@ -5,25 +5,31 @@
     width: 300px;
     .main_display{
       background-color: $black;
-      font-size: 20px;
+      // font-size: 16px;
       padding: 0 20px ;
       height: 100px;
       width: 260px;
       color: white;
       float: left;
       .left_content_header__box__name{
+        font-size: 16px;
+        font-weight: bold;
         width: 70%;
         float: left;
         line-height: 100px;
       }
       .left_content_header__box__icons{
-        width: 30%;
-        float: left;
+        float: right;
+        color: white;
         .chat-side__user--new-group{
           line-height: 100px;
           text-decoration: none;
           float:left;
           color: white;
+          .icon{
+            color: white;
+            // color:inherit;
+          }
         }
         .chat-side__user--edit-user{
           line-height: 100px;
@@ -31,6 +37,9 @@
           float:left;
           padding: 0 5px;
           color: white;
+          .icon{
+            color: white;
+          }
         }
       }
     }
@@ -41,16 +50,23 @@
       overflow-x: scroll;
       padding: 20px 20px 0;
       .group_list{
-        padding: 20px 20px ;
-        .group_name{
-          font-size: 15px;
-          color: #FFF;
-          margin-bottom: 5px;
-        }
-        .message_least{
-          font-size: 11px;
-          color: #FFF;
-        }
+        .linkgroup{
+          text-decoration: none;
+          .group_name{
+            font-size: 15px;
+            color: #FFF;
+            margin-bottom: 5px;
+            list-style: none;
+
+          }
+          .group__least{
+            font-size: 11px;
+            color: #FFF;
+            text-decoration: none;
+            margin-bottom: 40px;
+          }
+      }
+        
       }
     }
   }
@@ -84,16 +100,17 @@
         border: solid 1px $lightblue;
         position: absolute;
         right: 40px;
+        text-decoration: none;
       }
     }
     .messageslists{
       background-color: white;
-      height: calc(100vh - 200px);
+      height: calc(100vh - 190px);
       overflow-x: scroll;
-      padding-top: 6px;
+      padding: 46px 40px;
       border-top: solid 1px #eeeeee;
       .messagelist{
-        padding:20px 40px;
+        padding-bottom: 40px;
         &__create{
           height: 20px;
           .messagelist__name{
@@ -124,7 +141,7 @@
       width: calc(100% - 360px);
       height: 90px;
       padding: 20px 40px;
-      background-color: $lightgray;
+      background-color:#DDDDDD;
       position:fixed;
       .new_message{
         display: flex;
@@ -132,6 +149,7 @@
         .input-box{
           position: relative;
           width: 100%;
+          padding: 0 40px 0 10px;
         }
         .upload-label{
           i{
@@ -152,6 +170,7 @@
           margin-left: 15px;
           background-color: #38aef0;
           color: white;
+          border-color: #38aef0;
           cursor: pointer;
         }
       }

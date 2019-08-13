@@ -62,8 +62,9 @@ $(document).on('turbolinks:load', function() {
       });
 
       $('.messageslists').append(insertHTML);
-      $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fasts');
-      
+      if (messages != ''){
+        $('.messageslists').animate({scrollTop: $('.messageslists')[0].scrollHeight}, 'fasts');
+      }
     })
     .fail(function() {
       alert('error');
